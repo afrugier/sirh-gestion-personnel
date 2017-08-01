@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EditerCollaborateurController extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -39,7 +36,7 @@ public class EditerCollaborateurController extends HttpServlet {
 		if (info.isEmpty()) {
 			resp.setStatus(HttpServletResponse.SC_CREATED);
 			resp.getWriter()
-					.write("Création d’un collaborateur avec les informations suivantes : " + "matricule="
+					.write("Création d`un collaborateur avec les informations suivantes : " + "matricule="
 							+ req.getParameter("matricule") + ",titre=" + req.getParameter("titre") + ",nom="
 							+ req.getParameter("nom") + ",prenom=" + req.getParameter("prenom"));
 

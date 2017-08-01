@@ -20,4 +20,12 @@
 		<servlet-name>EditerCollaborateurController</servlet-name>
 		<url-pattern>/collaborateurs/editer</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>CreerCollaborateurController</servlet-name>
+		<servlet-class>dev.sgp.web.CreerCollaborateurController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreerCollaborateurController</servlet-name>
+		<url-pattern>/collaborateurs/creer</url-pattern>
+	</servlet-mapping>
 </web-app>

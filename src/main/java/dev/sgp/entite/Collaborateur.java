@@ -20,7 +20,7 @@ public class Collaborateur {
 	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc) {
 		super();
 
-		this.matricule = nom.substring(0, 2) + prenom.substring(0, 2);
+		this.matricule = nom.substring(0, 1) + prenom;
 
 		this.nom = nom;
 		this.prenom = prenom;
@@ -29,7 +29,7 @@ public class Collaborateur {
 		this.numSecuSoc = numSecuSoc;
 
 		this.emailPro = nom + "." + prenom + "@societe.com";
-		this.photo = "https://st2.depositphotos.com/1104517/11967/v/170/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg";
+		this.photo = "https://codepo8.github.io/canvas-images-and-pixels/img/horse.png";
 		this.dateHeureCreation = DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss").format(ZonedDateTime.now());
 		this.actif = true;
 	}

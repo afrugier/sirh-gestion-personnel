@@ -16,7 +16,9 @@
 		<c:forEach var="collab" items="${listeCollabs}">
 		<li class="thumbnail col-lg-4 col-md-4 col-xs-4" >
 			<div class="row">
-				<div class="col-lg-5 col-md-5 col-xs-5" ><img src="${collab.photo}" style="width: 50%"></div>
+				<div class="col-lg-5 col-md-5 col-xs-5 text-center" >
+					<img src="${collab.photo}" style="width: 80%;">
+				</div>
 				<div class="col-lg-7 col-md-7 col-xs-7" >Matricule : ${collab.matricule} <br/>
 				Nom Prénom : ${collab.nom} ${collab.prenom} <br/> 
 				Date de Naissance : ${collab.dateDeNaissance} <br/> 

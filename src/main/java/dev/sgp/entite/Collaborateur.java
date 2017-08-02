@@ -29,7 +29,7 @@ public class Collaborateur {
 		this.numSecuSoc = numSecuSoc;
 
 		this.emailPro = nom + "." + prenom + "@societe.com";
-		this.photo = "https://codepo8.github.io/canvas-images-and-pixels/img/horse.png";
+		this.photo = "http://dailygeekshow.com/wp-content/uploads/2014/07/anonyme.jpg";
 		this.dateHeureCreation = DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss").format(ZonedDateTime.now());
 		this.actif = true;
 	}

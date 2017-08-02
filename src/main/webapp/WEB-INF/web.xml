@@ -28,4 +28,20 @@
 		<servlet-name>CreerCollaborateurController</servlet-name>
 		<url-pattern>/collaborateurs/creer</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>StatistiqueController</servlet-name>
+		<servlet-class>dev.sgp.web.StatistiqueController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StatistiqueController</servlet-name>
+		<url-pattern>/collaborateurs/stat</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>FrequentationFilter</filter-name>
+		<filter-class>dev.sgp.filtre.FrequentationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FrequentationFilter</filter-name>
+		<url-pattern>/collaborateurs/*</url-pattern>
+	</filter-mapping>
 </web-app>

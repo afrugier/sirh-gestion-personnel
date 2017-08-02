@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/bootstrap-3.3.7-dist/css/bootstrap.css'> </c:url>">
 </head>
 <body>
 	<form class="form-horizontal" method="post" action="">
@@ -12,7 +14,7 @@
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="nom">nom</label>
-				<div class="col-md-4 col-md-offset-1">
+				<div class="col-md-4">
 					<input id="nom" name="nom" placeholder="nom" class="form-control input-md" required="" type="text">
 				</div>
 			</div>
@@ -42,7 +44,7 @@
 				<label class="col-md-4 control-label" for="NumSecu">Numéro
 					de sécurité sociale</label>
 				<div class="col-md-4">
-					<input id="NumSecu" name="NumSecu" placeholder="Numéro de sécurité sociale" class="form-control input-md" required="" type="text">
+					<input id="NumSecu" name="NumSecu" placeholder="Numéro de sécurité sociale" class="form-control input-md" required="" type="text" maxlength="15">
 				</div>
 			</div>
 			<!-- Button -->

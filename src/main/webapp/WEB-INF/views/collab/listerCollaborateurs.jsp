@@ -11,17 +11,27 @@
 <body>
 	<h1>Les collaborateurs de DTA</h1>
 	<!-- Liste des noms -->
+	<div class=".row">
 	<ul>
 		<%
 			List<Collaborateur> listeCollabs = (List<Collaborateur>)request.getAttribute("listeCollabs");
 			for (Collaborateur col : listeCollabs) {
 		%>
-		<li><%=col.getMatricule()%> / <%=col.getNom()%> / <%=col.getPrenom()%> / 
-		 <%=col.getDateDeNaissance()%> / <%=col.getAdresse()%> / <%=col.getNumSecuSoc()%> / 
-		 <%=col.getEmailPro()%> / <%=col.getDateHeureCreation()%></li>
+		<li class="thumbnail col-lg-4 col-md-4 col-xs-4" >
+		Matricule : <%=col.getMatricule()%> <br/>
+		Nom Prénom : <%=col.getNom()%> <%=col.getPrenom()%> <br/> 
+		Date de Naissance : <%=col.getDateDeNaissance()%> <br/> 
+		Adresse : <%=col.getAdresse()%> <br/> 
+		Numéro de sécurité sociale : <%=col.getNumSecuSoc()%> <br/> 
+		Email : <%=col.getEmailPro()%> <br/> 
+		Date de création du compte : <%=col.getDateHeureCreation()%> <br/> 
+		<img src=<%=col.getPhoto()%>></li>
+		 
 		<%
 			}
 		%>
+		
 	</ul>
+   </div>
 </body>
 </html>

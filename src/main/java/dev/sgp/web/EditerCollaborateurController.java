@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 public class EditerCollaborateurController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private static final String MATRICULE = "matricule";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String matricule = req.getParameter("matricule");
+		String matricule = req.getParameter(MATRICULE);
 		resp.setContentType("text/html");
 
 		if (matricule != null) {
@@ -29,7 +30,7 @@ public class EditerCollaborateurController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<String> info = Stream.of("matricule", "titre", "nom", "prenom").filter(p -> req.getParameter(p) == null)
+		List<String> info = Stream.of(MATRICULE, "titre", "nom", "prenom").filter(p -> req.getParameter(p) == null)
 				.collect(Collectors.toList());
 		resp.setContentType("text/html");
 		resp.getWriter().write("");
@@ -37,7 +38,7 @@ public class EditerCollaborateurController extends HttpServlet {
 			resp.setStatus(HttpServletResponse.SC_CREATED);
 			resp.getWriter()
 					.write("Création d`un collaborateur avec les informations suivantes : " + "matricule="
-							+ req.getParameter("matricule") + ",titre=" + req.getParameter("titre") + ",nom="
+							+ req.getParameter(MATRICULE) + ",titre=" + req.getParameter("titre") + ",nom="
 							+ req.getParameter("nom") + ",prenom=" + req.getParameter("prenom"));
 
 		} else {

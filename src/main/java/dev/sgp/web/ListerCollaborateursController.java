@@ -17,7 +17,7 @@ public class ListerCollaborateursController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// récupération du service
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	private static final CollaborateurService collabService = Constantes.COLLAB_SERVICE;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

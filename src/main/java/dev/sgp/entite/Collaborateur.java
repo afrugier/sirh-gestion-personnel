@@ -2,6 +2,7 @@ package dev.sgp.entite;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Collaborateur {
 
@@ -13,7 +14,7 @@ public class Collaborateur {
 	private String numSecuSoc;
 	private String emailPro;
 	private String photo;
-	private ZonedDateTime dateHeureCreation;
+	private String dateHeureCreation;
 	private boolean actif;
 
 	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc) {
@@ -29,7 +30,7 @@ public class Collaborateur {
 
 		this.emailPro = nom + "." + prenom + "@societe.com";
 		this.photo = "https://st2.depositphotos.com/1104517/11967/v/170/depositphotos_119675554-stock-illustration-male-avatar-profile-picture-vector.jpg";
-		this.dateHeureCreation = ZonedDateTime.now();
+		this.dateHeureCreation = DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss").format(ZonedDateTime.now());
 		this.actif = true;
 	}
 
@@ -97,11 +98,11 @@ public class Collaborateur {
 		this.photo = photo;
 	}
 
-	public ZonedDateTime getDateHeureCreation() {
+	public String getDateHeureCreation() {
 		return dateHeureCreation;
 	}
 
-	public void setDateHeureCreation(ZonedDateTime dateHeureCreation) {
+	public void setDateHeureCreation(String dateHeureCreation) {
 		this.dateHeureCreation = dateHeureCreation;
 	}
 

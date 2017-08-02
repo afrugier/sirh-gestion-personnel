@@ -18,14 +18,23 @@
 			for (Collaborateur col : listeCollabs) {
 		%>
 		<li class="thumbnail col-lg-4 col-md-4 col-xs-4" >
-		Matricule : <%=col.getMatricule()%> <br/>
+		
+		<div class=".row">
+		<div class="col-lg-5 col-md-5 col-xs-5" ><img src=<%=col.getPhoto()%>></div>
+		<div class="col-lg-7 col-md-7 col-xs-7" >Matricule : <%=col.getMatricule()%> <br/>
 		Nom Prénom : <%=col.getNom()%> <%=col.getPrenom()%> <br/> 
 		Date de Naissance : <%=col.getDateDeNaissance()%> <br/> 
 		Adresse : <%=col.getAdresse()%> <br/> 
 		Numéro de sécurité sociale : <%=col.getNumSecuSoc()%> <br/> 
 		Email : <%=col.getEmailPro()%> <br/> 
-		Date de création du compte : <%=col.getDateHeureCreation()%> <br/> 
-		<img src=<%=col.getPhoto()%>></li>
+		Date de création du compte : <%=col.getDateHeureCreation()%> <br/></div>
+		</div>
+		
+		
+		
+		
+		
+		</li>
 		 
 		<%
 			}

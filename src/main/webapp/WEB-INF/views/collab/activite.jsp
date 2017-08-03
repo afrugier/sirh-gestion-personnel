@@ -20,7 +20,7 @@
 		<c:forEach var="act" items="${listeActivite}">
 		<tbody>
 			<tr>
-				<td>${act.dateHeure}</td>
+				<td>${act.dateHeure.getDayOfMonth()}/${act.dateHeure.getMonthValue()}/${act.dateHeure.getYear()} ${act.dateHeure.getHour()}:${act.dateHeure.getMinute()}:${act.dateHeure.getSecond()}</td>
 				<td>${act.type.libelle} - Matricule : 
 				${act.matricule}</td>
 			</tr>

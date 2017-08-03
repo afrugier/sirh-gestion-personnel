@@ -25,7 +25,7 @@ public class StatistiqueController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<VisiteWeb> visites = VisiteWebServices.listerVisites();
+		List<VisiteWeb> visites = vws.listerVisites();
 		Map<String, List<VisiteWeb>> map = visites.stream().collect(Collectors.groupingBy(VisiteWeb::getChemin));
 
 		List<Statistique> listStat = map.keySet().stream().map(chemin -> {

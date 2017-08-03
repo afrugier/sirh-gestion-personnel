@@ -1,22 +1,24 @@
 package dev.sgp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import dev.sgp.entite.CollabEvt;
 
-@ApplicationScoped
+@Stateless
 public class ActiviteService {
-	List<CollabEvt> listeCollabEvt = new ArrayList<>();
+	@PersistenceContext(unitName = "sgp-pu")
+	private EntityManager em;
 
-	void recevoirEvenementCollab(@Observes CollabEvt evt) {
-		listeCollabEvt.add(evt);
+	public void recevoirEvenementCollab(@Observes CollabEvt evt) {
+		em.persist(evt);
 	}
 
 	public List<CollabEvt> listerActivitesCollab() {
-		return listeCollabEvt;
+		return em.createNamedQuery("CollabEvt.findAll", CollabEvt.class).getResultList();
 	}
 }

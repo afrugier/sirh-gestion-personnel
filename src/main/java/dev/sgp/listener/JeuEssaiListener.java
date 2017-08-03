@@ -17,6 +17,8 @@ import dev.sgp.service.DepartementService;
 @WebListener
 public class JeuEssaiListener implements ServletContextListener {
 
+
+
 	@Inject
 	private CollaborateurService collabService;
 	@Inject
@@ -24,14 +26,18 @@ public class JeuEssaiListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		
+		
 
-		departService.sauvegarderDepartement(new Departement(1, "Comptabilité"));
-		departService.sauvegarderDepartement(new Departement(2, "Ressources Humaines"));
-		departService.sauvegarderDepartement(new Departement(3, "Informatique"));
-		departService.sauvegarderDepartement(new Departement(4, "Administratif"));
+		departService.sauvegarderDepartement(new Departement("Comptabilité"));
+		departService.sauvegarderDepartement(new Departement("Ressources Humaines"));
+		departService.sauvegarderDepartement(new Departement("Informatique"));
+		departService.sauvegarderDepartement(new Departement("Administratif"));
 
 		List<Departement> listeDepartement = new ArrayList<>();
 		listeDepartement.addAll(departService.listerDepartements());
+
+
 
 
 		collabService.sauvegarderCollaborateur(new Collaborateur("frugier", "anthony", LocalDate.of(1993, 2, 4),
@@ -64,6 +70,8 @@ public class JeuEssaiListener implements ServletContextListener {
 
 		collabService.sauvegarderCollaborateur(new Collaborateur("lam", "tan", LocalDate.of(1993, 02, 04),
 				"38 rue de paris 71000 paris", "147852369789632", "e2", listeDepartement.get(2)));
+
+
 
 	}
 

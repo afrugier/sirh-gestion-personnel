@@ -1,43 +1,45 @@
 package dev.sgp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import dev.sgp.entite.VisiteWeb;
 
-@ApplicationScoped
+@Stateless
 public class VisiteWebServices {
+	@PersistenceContext(unitName = "sgp-pu")
+	private EntityManager em;
 
-	static List<VisiteWeb> listeVisites = new ArrayList<>();
 
-	public static List<VisiteWeb> listerVisites() {
-		return listeVisites;
+	public List<VisiteWeb> listerVisites() {
+		return em.createNamedQuery("VisiteWeb.findAll", VisiteWeb.class).getResultList();
 	}
 
 	public void sauvegarderVisite(VisiteWeb visite) {
-		listeVisites.add(visite);
+		em.persist(visite);
 	}
 
 	public int nbVisite(String chemin) {
-		return (int) listeVisites.stream().filter(p -> p.getChemin().equals(chemin)).count();
+		return (int) listerVisites().stream().filter(p -> p.getChemin().equals(chemin)).count();
 	}
 
 	public int trouverMin(String chemin) {
-		return listeVisites.stream().filter(p -> p.getChemin().equals(chemin)).mapToInt(VisiteWeb::getTempsExecution)
+		return listerVisites().stream().filter(p -> p.getChemin().equals(chemin)).mapToInt(VisiteWeb::getTempsExecution)
 				.min()
 				.getAsInt();
 	}
 
 	public int trouverMax(String chemin) {
-		return listeVisites.stream().filter(p -> p.getChemin().equals(chemin)).mapToInt(VisiteWeb::getTempsExecution)
+		return listerVisites().stream().filter(p -> p.getChemin().equals(chemin)).mapToInt(VisiteWeb::getTempsExecution)
 				.max()
 				.getAsInt();
 	}
 
 	public int trouverMoy(String chemin) {
-		return (int) Math.round(listeVisites.stream().filter(p -> p.getChemin().equals(chemin))
+		return (int) Math.round(listerVisites().stream().filter(p -> p.getChemin().equals(chemin))
 				.mapToInt(VisiteWeb::getTempsExecution).average().getAsDouble());
 	}
 }

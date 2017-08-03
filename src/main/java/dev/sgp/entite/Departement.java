@@ -1,12 +1,29 @@
 package dev.sgp.entite;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Departement")
+@NamedQueries({ @NamedQuery(name = "Departement.findAll", query = "select d from Departement d") })
 public class Departement {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
 
-	public Departement(Integer id, String nom) {
+	public Departement() {
 		super();
-		this.id = id;
+	}
+
+	public Departement(String nom) {
+		super();
 		this.nom = nom;
 	}
 

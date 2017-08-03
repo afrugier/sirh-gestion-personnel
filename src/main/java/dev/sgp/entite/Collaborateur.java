@@ -4,8 +4,20 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Collaborateur")
+@NamedQueries({ @NamedQuery(name = "Collaborateur.findAll", query = "select c from Collaborateur c") })
 public class Collaborateur {
 
+	@Id
 	private String matricule;
 	private String nom;
 	private String prenom;
@@ -17,7 +29,13 @@ public class Collaborateur {
 	private String dateHeureCreation;
 	private boolean actif;
 	private String intitulePoste;
+	@ManyToOne
+	@JoinColumn(name = "col_Dep")
 	private Departement departement;
+
+	public Collaborateur() {
+		super();
+	}
 
 	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc,
 			String intitulePoste, Departement departement) {

@@ -3,6 +3,7 @@ package dev.sgp.web;
 import java.io.IOException;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
 import dev.sgp.service.DepartementService;
-import dev.sgp.util.Constantes;
 
 @WebServlet("/collaborateurs/lister")
 public class ListerCollaborateursController extends HttpServlet {
@@ -21,8 +21,10 @@ public class ListerCollaborateursController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// récupération du service
-	private static final CollaborateurService collabService = Constantes.COLLAB_SERVICE;
-	private static final DepartementService departService = Constantes.DEPARTEMENT_SERVICES;
+	@Inject
+	private CollaborateurService collabService;
+	@Inject
+	private DepartementService departService;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -16,6 +16,29 @@ public class Collaborateur {
 	private String photo;
 	private String dateHeureCreation;
 	private boolean actif;
+	private String intitulePoste;
+	private Departement departement;
+
+	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc,
+			String intitulePoste, Departement departement) {
+		super();
+
+		this.matricule = nom.substring(0, 1) + prenom;
+
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+		this.adresse = adresse;
+		this.numSecuSoc = numSecuSoc;
+
+		this.emailPro = nom + "." + prenom + "@societe.com";
+		this.photo = "http://dailygeekshow.com/wp-content/uploads/2014/07/anonyme.jpg";
+		this.dateHeureCreation = DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss").format(ZonedDateTime.now());
+		this.actif = true;
+		this.intitulePoste = intitulePoste;
+		this.departement = departement;
+
+	}
 
 	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc) {
 		super();
@@ -112,6 +135,22 @@ public class Collaborateur {
 
 	public void setActif(boolean actif) {
 		this.actif = actif;
+	}
+
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 
 }

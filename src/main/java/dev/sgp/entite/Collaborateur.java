@@ -52,7 +52,7 @@ public class Collaborateur {
 		this.numSecuSoc = numSecuSoc;
 
 		this.emailPro = nom + "." + prenom + "@societe.com";
-		this.photo = "http://dailygeekshow.com/wp-content/uploads/2014/07/anonyme.jpg";
+		this.photo = "http://eshop.angelchef.gr/wp-content/uploads/2014/10/ANONYMOUS-276x328.png";
 		this.dateHeureCreation = DateTimeFormatter.ofPattern("dd/MM/yyyy - hh:mm:ss").format(ZonedDateTime.now());
 		this.actif = true;
 	}

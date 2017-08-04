@@ -20,4 +20,9 @@ public class DepartementService {
 	public void sauvegarderDepartement(Departement depart) {
 		em.persist(depart);
 	}
+
+	public Departement getDepartementById(Integer integer) {
+		return em.createNamedQuery("Departement.findDepartById", Departement.class)
+				.setParameter("iddepart", integer).getSingleResult();
+	}
 }

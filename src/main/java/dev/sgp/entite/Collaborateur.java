@@ -14,7 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Collaborateur")
-@NamedQueries({ @NamedQuery(name = "Collaborateur.findAll", query = "select c from Collaborateur c") })
+@NamedQueries({ @NamedQuery(name = "Collaborateur.findAll", query = "select c from Collaborateur c"),
+		@NamedQuery(name = "Collaborateur.findCollabByDepart", query = "select c from Collaborateur c where c.departement.id=:iddepart"),
+		@NamedQuery(name = "Collaborateur.findCollabByMatricule", query = "select c from Collaborateur c where c.matricule=:matricule"),
+		@NamedQuery(name = "Collaborateur.findCoorBanqCollabByMatricule", query = "select c from Collaborateur c where c.matricule=:matricule") })
 public class Collaborateur {
 
 	@Id
@@ -30,15 +33,19 @@ public class Collaborateur {
 	private boolean actif;
 	private String intitulePoste;
 	@ManyToOne
-	@JoinColumn(name = "col_Dep")
+	@JoinColumn(name = "id_Departement")
 	private Departement departement;
+	private String banque;
+	private String iban;
+	private String bic;
 
 	public Collaborateur() {
 		super();
 	}
 
-	public Collaborateur(String nom, String prenom, LocalDate dateDeNaissance, String adresse, String numSecuSoc,
-			String intitulePoste, Departement departement) {
+	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateDeNaissance, String adresse,
+			String numSecuSoc, ZonedDateTime zonedDateTime, boolean inactif, String intitulePoste,
+			Departement departement, String banque, String iban, String bic) {
 		super();
 
 		this.matricule = nom.substring(0, 1) + prenom;
@@ -55,6 +62,9 @@ public class Collaborateur {
 		this.actif = true;
 		this.intitulePoste = intitulePoste;
 		this.departement = departement;
+		this.banque = banque;
+		this.iban = iban;
+		this.bic = bic;
 
 	}
 
@@ -169,6 +179,30 @@ public class Collaborateur {
 
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
+	}
+
+	public String getBanque() {
+		return banque;
+	}
+
+	public void setBanque(String banque) {
+		this.banque = banque;
+	}
+
+	public String getIban() {
+		return iban;
+	}
+
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public String getBic() {
+		return bic;
+	}
+
+	public void setBic(String bic) {
+		this.bic = bic;
 	}
 
 }

@@ -29,4 +29,42 @@ public class CollaborateurService {
 		em.persist(collab);
 		collabEvt.fire(new CollabEvt(ZonedDateTime.now(), TypeCollabEvt.CREATION_COLLAB, collab.getMatricule()));
 	}
+
+	public List<Collaborateur> trouverCollaborateurParDepart(Integer idDepart) {
+		return em.createNamedQuery("Collaborateur.findCollabByDepart", Collaborateur.class)
+				.setParameter("iddepart", idDepart).getResultList();
+	}
+
+	public Collaborateur trouverCollaborateurParMatricule(String matricule) {
+		return em.createNamedQuery("Collaborateur.findCollabByMatricule", Collaborateur.class)
+				.setParameter("matricule", matricule).getSingleResult();
+	}
+
+	public void editerCollaborateur(String mat, Collaborateur collab) {
+
+		String collaborateur = em
+				.createQuery("select c.matricule from Collaborateur c where c.matricule=:mat", String.class)
+				.setParameter("mat", mat).getSingleResult();
+
+		if (collaborateur != null) {
+			collab.setMatricule(collaborateur);
+			em.merge(collab);
+		}
+	}
+
+	public void editerCollaborateur(Collaborateur collaborateur) {
+		Collaborateur collab = trouverCollaborateurParMatricule(collaborateur.getMatricule());
+		if (collab != null) {
+			collab.setActif(collaborateur.isActif());
+			collab.setAdresse(collaborateur.getAdresse());
+			collab.setBanque(collaborateur.getBanque());
+			collab.setBic(collaborateur.getBic());
+			collab.setIban(collaborateur.getIban());
+			collab.setIntitulePoste(collaborateur.getIntitulePoste());
+			collab.setDepartement(collaborateur.getDepartement());
+			em.merge(collab);
+			collabEvt.fire(new CollabEvt(ZonedDateTime.now(), TypeCollabEvt.MODIFICATION_COLLAB,
+					collaborateur.getMatricule()));
+		}
+	}
 }

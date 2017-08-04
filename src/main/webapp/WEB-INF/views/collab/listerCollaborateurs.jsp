@@ -13,9 +13,11 @@
 </head>
 <body>
 	<h1>Les collaborateurs de DTA</h1>
+	<a href="http://localhost:8080/sgp/collaborateurs/creer" class="btn btn-primary col-lg-2 col-md-4 col-sm-5 col-xs-12 col-lg-offset-7 col-md-offset-3 col-sm-offset-1">Créer un collaborateur <span class="glyphicon glyphicon-pencil"></span></a>
+	<a href="#" class="btn btn-info col-lg-2 col-md-4 col-sm-5 col-xs-12">Editer un collaborateur <span class="glyphicon glyphicon-edit"></span></a>
+	
 
 	<form class="form-horizontal">
-
 		<!-- Search input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="searchinput">Rechercher
@@ -52,7 +54,7 @@
 	<div class="row">
 		<ul>
 			<c:forEach var="collab" items="${listeCollabs}">
-				<li class="thumbnail col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<li class="thumbnail col-lg-4 col-md-6 col-sm-12 col-xs-12">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"
 							style="font-size: 20px;">${collab.nom} ${collab.prenom}</div>

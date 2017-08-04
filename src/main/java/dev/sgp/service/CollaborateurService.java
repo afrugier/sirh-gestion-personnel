@@ -42,12 +42,12 @@ public class CollaborateurService {
 
 	public void editerCollaborateur(String mat, Collaborateur collab) {
 
-		String collaborateur = em
+		String matricule = em
 				.createQuery("select c.matricule from Collaborateur c where c.matricule=:mat", String.class)
 				.setParameter("mat", mat).getSingleResult();
 
-		if (collaborateur != null) {
-			collab.setMatricule(collaborateur);
+		if (matricule != null) {
+			collab.setMatricule(matricule);
 			em.merge(collab);
 		}
 	}

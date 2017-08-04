@@ -15,6 +15,8 @@
 	<h1>Les collaborateurs de DTA</h1>
 	<a href="http://localhost:8080/sgp/collaborateurs/creer" class="btn btn-primary col-lg-2 col-md-4 col-sm-5 col-xs-12 col-lg-offset-7 col-md-offset-3 col-sm-offset-1">Créer un collaborateur <span class="glyphicon glyphicon-pencil"></span></a>
 	<a href="#" class="btn btn-info col-lg-2 col-md-4 col-sm-5 col-xs-12">Editer un collaborateur <span class="glyphicon glyphicon-edit"></span></a>
+	<a href="http://localhost:8080/sgp/collaborateurs/stat" class="btn btn-success col-lg-2 col-md-4 col-sm-5 col-xs-12 col-lg-offset-7 col-md-offset-3 col-sm-offset-1">Statistique de la session<span class="glyphicon glyphicon-stats"></span></a>
+	<a href="http://localhost:8080/sgp/collaborateurs/act" class="btn btn-warning col-lg-2 col-md-4 col-sm-5 col-xs-12">activité de la session <span class="glyphicon glyphicon-user"></span></a>
 	
 
 	<form class="form-horizontal">

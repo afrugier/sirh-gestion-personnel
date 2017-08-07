@@ -73,9 +73,7 @@ public class CollaborateurResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{matricule}/banque")
 	public Response updateBanqueCollaborateur(@PathParam("matricule") String matricule,
-			@QueryParam("adresse") String adresse, @QueryParam("banque") String banque, @QueryParam("bic") String bic,
-			@QueryParam("iban") String iban, @QueryParam("telephone") String tel, @QueryParam("departement") Integer id,
-			@QueryParam("intitulePoste") String intitulePoste) {
+			@QueryParam("banque") String banque, @QueryParam("bic") String bic, @QueryParam("iban") String iban) {
 
 		Map<String, Object> params = new HashMap<>();
 		params.put("matricule", matricule);
@@ -96,7 +94,7 @@ public class CollaborateurResource {
 			collab.setBanque(banque);
 			collab.setBic(bic);
 			collab.setIban(iban);
-			collabService.editerCollaborateur(collab);
+			collabService.editerBanqueCollaborateur(matricule, collab);
 			return Response.status(Response.Status.OK).build();
 
 		}

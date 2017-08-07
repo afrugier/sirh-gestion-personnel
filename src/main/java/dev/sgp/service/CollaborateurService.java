@@ -55,13 +55,22 @@ public class CollaborateurService {
 	public void editerCollaborateur(Collaborateur collaborateur) {
 		Collaborateur collab = trouverCollaborateurParMatricule(collaborateur.getMatricule());
 		if (collab != null) {
-			collab.setActif(collaborateur.isActif());
-			collab.setAdresse(collaborateur.getAdresse());
 			collab.setBanque(collaborateur.getBanque());
 			collab.setBic(collaborateur.getBic());
 			collab.setIban(collaborateur.getIban());
-			collab.setIntitulePoste(collaborateur.getIntitulePoste());
-			collab.setDepartement(collaborateur.getDepartement());
+			em.merge(collab);
+			collabEvt.fire(new CollabEvt(ZonedDateTime.now(), TypeCollabEvt.MODIFICATION_COLLAB,
+					collaborateur.getMatricule()));
+		}
+	}
+
+	public void editerBanqueCollaborateur(String mat, Collaborateur collaborateur) {
+		Collaborateur collab = trouverCollaborateurParMatricule(collaborateur.getMatricule());
+		if (trouverCollaborateurParMatricule(mat) != null) {
+			collab.setMatricule(mat);
+			collab.setBanque(collaborateur.getBanque());
+			collab.setBic(collaborateur.getBic());
+			collab.setIban(collaborateur.getIban());
 			em.merge(collab);
 			collabEvt.fire(new CollabEvt(ZonedDateTime.now(), TypeCollabEvt.MODIFICATION_COLLAB,
 					collaborateur.getMatricule()));
